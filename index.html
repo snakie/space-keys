@@ -3,6 +3,8 @@
         <title>space-keys.com</title>
         <script src="easeljs-0.7.1.min.js"></script>
         <script src="space-keys.js"></script>
+        <script src="obstacles.js"></script>
+        <script src="level1.js"></script>
         <style>
             table {width: 750px; margin:0px auto;}
             textarea {height: 500px; width:100px;}
@@ -14,12 +16,19 @@
             <tr><td><canvas height="500" width="600" id="spacekeys">sorry javascript is required to play space-keys</canvas></td>
                 <td><button type="button" onclick="launch();">Launch!</button></td>
                 <td><button type="button" onclick="reset();">Reset.</button></td>
-                <td><textarea id="commands">fire(1);
-turn_left(3);
-fire(2);
-turn_right(3);
+                <td><textarea id="commands">
+fire(4);
+turn(-90);
 fire(1);
-</textarea></td></tr>
+turn(180);
+fire(1);
+turn(-90);
+fire(3);
+</textarea></td></tr><tr><td id="livestats">Rocket Speed: <span id="speed">0</span> m/s
+			   Rocket Angle: <span id="angle">0</span>&deg;<br>
+			   Current Command: <span id="command">rocket not in motion.</span><br>
+			   Timer: <span id="timer">0 s</span>
+			   </td></tr>
         <table>
         <pre>
                 You're objective is to fly your space craft around the moon and land successfully! 
@@ -28,59 +37,25 @@ fire(1);
 
                 -fire(# of seconds);
                 -sleep(# of seconds);
-                -turn_left(# of seconds);
-                -turn_right(# of seconds);
+                -turn(number of degrees);
+          			- positive 180 will turn around clockwise to the right
+          			- negative 360 will turn 1 full circle to the left
 
-                For example to take off, turn around and land again:
+                For example to take off, power left, power right, and land:
 
-                fire(1);
-                turn_left(3);
-                fire(2);
-                turn_right(3);
-                fire(1);
+			fire(4);
+			turn(-90);
+			fire(1);
+			turn(180);
+			fire(1);
+			turn(-90);
+			fire(3);
 
                 Important: Semicolons are required after each commands.
+                
+                To land, you rocket must be upright (0 degrees) and traveling at less then 8 m/s
+                
+                Watch out for gravity and have fun!
 
-                scroll down for the solution.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                fire(1,100);
-                sleep(1); 
-                turn_right(1.5);
-                fire(1);
-                turn_left(3);
-                fire(2);
-                turn_left(1.5);
-                fire(2);
-                turn_left(1.5);
-                fire(1);
-                turn_right(4.5);
-                sleep(3);
-                fire(1);
-        </pre>
     </body>
 </html>
