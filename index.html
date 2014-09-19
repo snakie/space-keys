@@ -2,48 +2,85 @@
     <head>
         <title>space-keys.com</title>
         <script src="easeljs-0.7.1.min.js"></script>
-        <script>
-            var stage;
-            var rocket;
-            function get_rocket() {
-                var r = new createjs.Shape();
-                r.graphics.beginStroke("#000").moveTo(145,500).lineTo(150,480).lineTo(155,500).lineTo(150,495).lineTo(145,500);
-                return r;
-            }
-            function init() {
-                stage = new createjs.Stage("spacekeys");
-                rocket = get_rocket();
-                stage.addChild(rocket);
-                stage.update();
-
-            }
-            function launch() {
-                console.log("launching!");
-                createjs.Ticker.addEventListener("tick", launch_frame);
-            }
-            function launch_frame() {
-                //console.log("rocket at: ("+rocket.x+","+rocket.y+")");
-                rocket.y -= 5;
-                if(rocket.y < -500) {
-                    createjs.Ticker.removeEventListener("tick", launch_frame);
-                    rocket.y = 0;
-                }
-                stage.update();
-            }
-        </script>
+        <script src="space-keys.js"></script>
         <style>
-            table {width: 650px; margin:0px auto;}
-            textarea {height: 500px; width:300px;}
+            table {width: 750px; margin:0px auto;}
+            textarea {height: 500px; width:100px;}
             canvas {border:1px solid #000;}
         </style>
     </head>
     <body onLoad="init();">
         <table>
-            <tr><td><canvas height="500" width="300" id="spacekeys">sorry javascript is required to play space-keys</vanvas></td>
+            <tr><td><canvas height="500" width="600" id="spacekeys">sorry javascript is required to play space-keys</canvas></td>
                 <td><button type="button" onclick="launch();">Launch!</button></td>
-                <td><textarea>launch;
-sleep(5); 
-fire(1,.5);</textarea></td></tr>
+                <td><button type="button" onclick="reset();">Reset.</button></td>
+                <td><textarea id="commands">fire(1);
+turn_left(3);
+fire(2);
+turn_right(3);
+fire(1);
+</textarea></td></tr>
         <table>
+        <pre>
+                You're objective is to fly your space craft around the moon and land successfully! 
+        
+                Use the commands:
+
+                -fire(# of seconds);
+                -sleep(# of seconds);
+                -turn_left(# of seconds);
+                -turn_right(# of seconds);
+
+                For example to take off, turn around and land again:
+
+                fire(1);
+                turn_left(3);
+                fire(2);
+                turn_right(3);
+                fire(1);
+
+                Important: Semicolons are required after each commands.
+
+                scroll down for the solution.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                fire(1,100);
+                sleep(1); 
+                turn_right(1.5);
+                fire(1);
+                turn_left(3);
+                fire(2);
+                turn_left(1.5);
+                fire(2);
+                turn_left(1.5);
+                fire(1);
+                turn_right(4.5);
+                sleep(3);
+                fire(1);
+        </pre>
     </body>
 </html>
